@@ -29,7 +29,7 @@ const  nav = () =>{
             <div className='space-x-4'>
                 <div className='hidden ssm:hidden lg:block space-x-2'>
                     <a href="#" className="font-mono text-white hover:bg-slate-400
-                    rounded-full px-5 py-2 text-xl">About</a>
+                    rounded-full px-5 py-2 text-xl">Profile</a>
                     <a href="#" className="font-mono text-white hover:bg-slate-400
                     rounded-full px-5 py-2 text-xl">Skills</a>
                     <a href="#" className="font-mono text-white hover:bg-slate-400
@@ -51,12 +51,11 @@ const  nav = () =>{
             {toggle ? (
                 <div className='flex justify-between ml-10'>
                     <ul>
-                        <li className='text-white text-xl mb-2' >About</li>
+                        <li className='text-white text-xl mb-2' >Profile</li>
                         <li className='text-white text-xl mb-2'>Skills</li>
                         <li className='text-white text-xl mb-2'>Projects</li>
                         <li className='text-white text-xl mb-2'>Resume</li>
                         <li className='text-white text-xl mb-6'>Contact Me</li>
-                        
                     </ul>
                 </div>
 
