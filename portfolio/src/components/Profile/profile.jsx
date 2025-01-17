@@ -5,9 +5,9 @@ const profile = () => {
 
     return (
         <>
-            <section className="flex flex-col lg:flex-row p-10 space-y-10 text-white">
+            <section id="profile" className="flex flex-col lg:flex-row pt-10 pb-5 px-10 space-y-10 text-white">
                 <div>
-                    <h1 className="text-4xl text-white font-sans">Profile</h1>
+                    <h1 className="text-4xl text-white font-sans font-semibold">Profile</h1>
                     <p className="text-xl text-slate-300 font-sans mt-5 lg:w-3/5 text-justify">
                         I’m a dedicated third-year student at the department of Computer Science, 
                         University of Cyprus. I’m enthusiastic and driven about my studies and 

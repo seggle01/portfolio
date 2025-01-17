@@ -23,7 +23,7 @@ function SlideShow({ slides }) {
     }
 
     const tagColors = {
-        libgdx : "bg-red-700",
+        LibGDX : "bg-red-700",
         Javascript : "bg-yellow-500",
         Django: "bg-green-800",
         Python: "bg-blue-600",
@@ -39,7 +39,7 @@ function SlideShow({ slides }) {
     };
 
     const textColors = {
-        java: 'text-yellow-300',
+        Java: 'text-yellow-300',
         "Html/Css": "text-gray-600",
         Javascript: "text-black",
         UI : "text-black",

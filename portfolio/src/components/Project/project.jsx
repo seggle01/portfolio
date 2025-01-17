@@ -29,7 +29,7 @@ const slides = [
         title: 'Battleships Game',
         description: 'A libGDX game for the classic game of Battleships.',
         fullDescription: 'A personal project currently in progress, that uses the popular Java game development framework libGDX. Assets were created by myself using programs like Asesprite and Piskel.',
-        tags: 'libgdx,java,UI'
+        tags: 'LibGDX,Java,UI'
     },
     {
         image: Project4,
@@ -50,9 +50,9 @@ const slides = [
 const  project = () =>{
     return (
         <>
-        <div className="bg-slate-500 m-10 rounded-xl">
+        <div id="projects" className="bg-slate-500 m-10 rounded-xl">
                 <div className="grid justify-items-center m-10">
-                    <h1 className="text-4xl text-white mt-10">Projects</h1>
+                    <h1 className="text-4xl text-white mt-10 font-sans font-semibold">Projects</h1>
                 </div>
                 <div className="flex items-center justify-center">
                     <p className="text-xl text-white ml-2">

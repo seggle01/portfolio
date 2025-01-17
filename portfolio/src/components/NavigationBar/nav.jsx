@@ -28,15 +28,15 @@ const  nav = () =>{
 
             <div className='space-x-4'>
                 <div className='hidden ssm:hidden lg:block space-x-2'>
-                    <a href="#" className="font-mono text-white hover:bg-slate-400
+                    <a href="#profile" className="font-mono text-white hover:bg-slate-400 hover:underline
                     rounded-full px-5 py-2 text-xl">Profile</a>
-                    <a href="#" className="font-mono text-white hover:bg-slate-400
-                    rounded-full px-5 py-2 text-xl">Skills</a>
-                    <a href="#" className="font-mono text-white hover:bg-slate-400
+                    <a href="#experience" className="font-mono text-white hover:bg-slate-400 hover:underline
+                    rounded-full px-5 py-2 text-xl">Experience</a>
+                    <a href="#projects" className="font-mono text-white hover:bg-slate-400 hover:underline
                     rounded-full px-5 py-2 text-xl">Projects</a>
-                    <a href="#" className="font-mono text-white hover:bg-slate-400
+                    <a href="#resume" className="font-mono text-white hover:bg-slate-400 hover:underline
                     rounded-full px-5 py-2 text-xl">Resume</a>
-                    <a href="#" className="font-mono text-white hover:bg-slate-400
+                    <a href="#contact" className="font-mono text-white hover:bg-slate-400 hover:underline
                     rounded-full px-5 py-2 text-xl whitespace-nowrap">Contact Me</a>
                 </div>
                 <div className='lg:hidden ssm:block'>
@@ -51,11 +51,11 @@ const  nav = () =>{
             {toggle ? (
                 <div className='flex justify-between ml-10'>
                     <ul>
-                        <li className='text-white text-xl mb-2' >Profile</li>
-                        <li className='text-white text-xl mb-2'>Skills</li>
-                        <li className='text-white text-xl mb-2'>Projects</li>
-                        <li className='text-white text-xl mb-2'>Resume</li>
-                        <li className='text-white text-xl mb-6'>Contact Me</li>
+                        <li className='text-white text-xl mb-2 hover:underline' >Profile</li>
+                        <li className='text-white text-xl mb-2 hover:underline'>Experience</li>
+                        <li className='text-white text-xl mb-2 hover:underline'>Projects</li>
+                        <li className='text-white text-xl mb-2 hover:underline'>Resume</li>
+                        <li className='text-white text-xl mb-6 hover:underline'>Contact Me</li>
                     </ul>
                 </div>
 
