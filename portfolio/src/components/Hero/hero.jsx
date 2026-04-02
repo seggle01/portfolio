@@ -1,50 +1,21 @@
 /**
- * Hero Section component for the portfolio website landing page.
+ * Hero sectiion and Typewrite components for the portfolio website.
  * 
- * @fileoverview Main landing section that serves as the first impression for visitors.
- * Features animated text introduction and profile image with responsive layout.
+ * @fileoverview This file contains a responsive hero component that uses animations 
+ * from framer-motion presenting the person image as well as an introductory welcoming message.
+ * It also includes a Typewrite component that creates an typewrite animation.
  * 
- * @description The Hero component displays a personal introduction with:
- * - Animated greeting text with slide-in effects
- * - Large name display as the main focal point
- * - Brief personal description/tagline
- * - Professional profile image with styling
- * - Fully responsive design (mobile-first approach)
- * 
- * @component
- * @example
- * // Basic usage 
- * import Hero from './Hero';
- * 
- * function App() {
- *   return (
- *     <div>
- *       <Hero />
- *     </div>
- *   );
- * }
- * 
- * @dependencies
- * - framer-motion (motion animations and transitions)
- * - React (functional component)
- * 
- * @assets
- * - HeroPic (../../assets/icon.jpg) - Profile/hero image
- * 
- * @animations
- * @description Uses Framer Motion for smooth entrance animations:
- * - Text elements slide in from left (-100px) to center (0px)
- * - Staggered animation timing for visual hierarchy
- * - Opacity fade-in effect combined with slide motion
- * 
- * @styling
- * @requires Tailwind CSS for responsive layout and styling
- * @breakpoints
- * - default: Mobile Vertical stack layout, centered text
- * - lg: Horizontal layout, left-aligned text
+ * @requires react
+ * @requires framer-motion
+ * @requires tailwindcss
+ * @styling Tailwind CSS utility classes for responsive layout and design.
  * 
  * @see {@link https://www.framer.com/motion/} Framer Motion documentation
  * @see {@link https://tailwindcss.com/docs/responsive-design} Tailwind responsive design
+ * 
+ * 
+ *  @assets
+ * - HeroPic (../../assets/icon.jpg) - Profile/hero image
  * 
  * @version 1.0.0
  * @since 2025-01-17
@@ -58,26 +29,40 @@ const LETTER_DELAY = 0.075;
 const BOX_FADE_DURATION = 0.175;
 
 /**
+ * @component
  * Typewrite Component
- * @description Renders a sentence with a typewriter effect using staggered animation.
+ * 
+ * @abstract Renders a sentence with a typewriter effect using staggered animation.
+ * 
+ * @description This component takes an sentence and divides the words to specific elements.
+ * Then each word is divided to letter spans along with a flashing box cursor.
  *
  * @param {{ sentence: string }} props - The sentence to animate.
+ * 
  * @returns {JSX.Element}
  */
 const Typewrite = ({ sentence }) => {
+
+    /**
+     * An array of all the words in the sentence.
+     * @type {string[]}
+     */
     const words = sentence.split(" ");
     let letterIndex = 0; // Global letter counter for continuous timing
     
     return (
         <p className="mt-5 break-words leading-relaxed">
+            {/* Map each word in the array with an index
+                and create a span element for it. */}
             {words.map((word, wordIndex) => (
-                <motion.span
-                    key={wordIndex}
-                    className="inline-block whitespace-nowrap mr-2" // Force word to stay together
-                >
-                    {word.split("").map((letter, letterIndexInWord) => {
-                        const currentLetterIndex = letterIndex++;
+                <motion.span key={wordIndex} className="inline-block whitespace-nowrap mr-2" // Force word to stay together
+                >{
+                    // Now for each word map each letter with an index 
+                    // and create an animated motion span for each one
+                    word.split("").map((letter, letterIndexInWord) => {
+                        const currentLetterIndex = letterIndex++; // Keep current index
                         return (
+                            // Each span has two sub elements: One is the letter itself and the other the flashing box cursor
                             <motion.span className="relative inline-block" key={letterIndexInWord}>
                                 {/* Fading in each character with delay */}
                                 <motion.span
@@ -106,16 +91,21 @@ const Typewrite = ({ sentence }) => {
                                 />
                             </motion.span>
                         );
-                    })}
-                </motion.span>
+                    })
+
+                }</motion.span>
             ))}
         </p>
     );
 };
 
 /**
- * Hero Component
- * @description Main hero section with animated text and profile image.
+ * @component
+ * Hero Section Component
+ * 
+ * @description The Hero section for the personalized portfolio. A photo
+ * of the person can be uploaded and also provide a welcoming message.
+ * 
  * @returns {JSX.Element}
  */
 const Hero = () => {

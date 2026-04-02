@@ -6,6 +6,20 @@ function SlideShow({ slides }) {
     const [slideIndex, setSlideIndex] = useState(0);
     const [isModalOpen, setModalOpen] = useState(false);
 
+    // Prevent body scroll when modal is open
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Cleanup: ensure scroll is re-enabled when component unmounts
+        return () => {
+            document.body.classList.remove('overflow-hidden');
+        };
+    }, [isModalOpen]);
+
     function setSlider(number) {
         if (slideIndex === 0 && number === -1) {
             setSlideIndex(slides.length - 1);
@@ -23,28 +37,54 @@ function SlideShow({ slides }) {
     }
 
     const tagColors = {
-        LibGDX : "bg-red-700",
-        Javascript : "bg-yellow-500",
-        Django: "bg-green-800",
-        Python: "bg-blue-600",
-        "Html/Css": "bg-orange-500",
+        LibGDX: "bg-red-700",
+        Javascript: "bg-yellow-400",
+        Django: "bg-green-700",
+        Python: "bg-teal-700",
+        "Html/Css": "bg-orange-600",
         JQuery: "bg-red-700",
-        PostgresSQL: "",
-        Docker: "bg-cyan-500",
+        PostgresSQL: "bg-blue-600",        
+        Docker: "bg-blue-800",
         SQL: "bg-blue-500",
-        QGIS : "bg-lime-900",
-        UI : "bg-teal-100",
-        Laravel : "bg-purple-900",
-        PHP : "bg-purple-300",
+        QGIS: "bg-lime-900",
+        UI: "bg-emerald-600",
+        Laravel: "bg-purple-600",
+        PHP: "bg-indigo-700",              
+        Java: "bg-orange-500",             
     };
 
     const textColors = {
-        Java: 'text-yellow-300',
-        "Html/Css": "text-gray-600",
-        Javascript: "text-black",
-        UI : "text-black",
-        Docker : "text-blue-700",
-        PHP : "text-stone-500",
+        LibGDX: "text-red-300",
+        Javascript: "text-yellow-100",
+        Django: "text-green-200",
+        Python: "text-teal-200",
+        "Html/Css": "text-orange-200",
+        JQuery: "text-red-300",
+        PostgresSQL: "text-blue-200",  
+        Docker: "text-blue-200",
+        SQL: "text-blue-200",             
+        QGIS: "text-lime-200",             
+        UI: "text-emerald-100",
+        Laravel: "text-purple-200",        
+        PHP: "text-indigo-200",          
+        Java: "text-orange-200",           
+    };
+
+    const borderColors = {
+        LibGDX: "border-red-800",
+        Javascript: "border-yellow-500",
+        Django: "border-green-800",
+        Python: "border-teal-800",
+        "Html/Css": "border-orange-700",
+        JQuery: "border-red-800",
+        PostgresSQL: "border-blue-700",        
+        Docker: "border-blue-900",
+        SQL: "border-blue-600",
+        QGIS: "border-lime-900",
+        UI: "border-emerald-700",
+        Laravel: "border-purple-700",
+        PHP: "border-indigo-800",              
+        Java: "border-orange-600",            
     };
 
     function getTagColor(tag) {
@@ -55,6 +95,9 @@ function SlideShow({ slides }) {
         return textColors[tag] || "text-white";
     }
 
+    function getBorderColor(tag) {
+        return borderColors[tag] || "border-gray-600";
+    }
 
     return (
         <div id="slider" className="flex flex-col items-center justify-center p-8">
@@ -93,19 +136,33 @@ function SlideShow({ slides }) {
                 </>
             )}
 
-            {/* Modal */}
+            {/* Improved Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="bg-white rounded-lg p-8 max-w-lg w-full">
-                        <h2 className="text-2xl font-bold mb-4">{slides[slideIndex].title}</h2>
-                        <p className="mb-6">{slides[slideIndex].fullDescription}</p>
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-slate-600 rounded-lg p-6 sm:p-8 w-full max-w-sm sm:max-w-lg lg:max-w-2xl border-2 border-slate-700 overflow-y-auto">
+                        {/* Close button */}
+                        <button 
+                            onClick={toggleModal}
+                            className="float-right text-white hover:text-gray-300 text-2xl font-bold mb-4 leading-none"
+                            aria-label="Close modal"
+                        >
+                            ×
+                        </button>
+                        
+                        <h2 className="text-xl sm:text-2xl text-white font-bold mb-4 clear-both pr-8">
+                            {slides[slideIndex].title}
+                        </h2>
+                        
+                        <p className="mb-6 text-white leading-relaxed text-sm sm:text-base">
+                            {slides[slideIndex].fullDescription}
+                        </p>
 
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-2 mb-6">
                             {slides[slideIndex].tags &&
                                 slides[slideIndex].tags.split(",").map((tag, index) => (
                                     <div
                                         key={index}
-                                        className={`px-4 py-2 ${getTagColor(tag.trim())} ${getTextColor(tag.trim())} font-medium rounded-full`}
+                                        className={`px-3 py-1.5 sm:px-4 sm:py-2 ${getTagColor(tag.trim())} ${getTextColor(tag.trim())}  border-2 ${getBorderColor(tag.trim())} font-medium rounded-full text-xs sm:text-sm`}
                                     >
                                         #{tag.trim()}
                                     </div>
@@ -114,7 +171,7 @@ function SlideShow({ slides }) {
 
                         <button
                             onClick={toggleModal}
-                            className="bg-blue-500 text-white font-medium py-2 px-4 rounded"
+                            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-6 rounded transition-colors duration-200"
                         >
                             Close
                         </button>

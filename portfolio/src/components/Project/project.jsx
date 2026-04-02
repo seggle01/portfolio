@@ -1,5 +1,4 @@
 //This is the Projects Section
-import { CiCircleCheck } from "react-icons/ci";
 import SlideShow from "../SlideShow/slideshow";
 import Project1 from "../../assets/project1.jpg"; 
 import Project2 from "../../assets/project2.jpg"; 
@@ -55,11 +54,11 @@ const  project = () =>{
                     <h1 className="text-4xl text-white mt-10 font-sans font-semibold">Projects</h1>
                 </div>
                 <div className="flex items-center justify-center">
-                    <p className="text-xl text-white ml-2">
+                    <p className="text-xl text-white text-center mb-5">
                         Here are some projects that provide a glimpse of my work, knowledge and dedication.
                     </p>
                 </div>
-                <hr className="text-xl"/>
+                <hr className="border-t-2 border-gray-400 border-dashed"/>
                 <SlideShow slides={slides} />
         </div>
         </>
