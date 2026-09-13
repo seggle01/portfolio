@@ -35,7 +35,7 @@ const Footer = () => {
                     className="flex flex-wrap justify-center gap-4"
                 >
                     <LinkButton
-                        href="/pdf/Stefanos_Englezou_CV.pdf"
+                        href="./pdf/Stefanos_Englezou_CV.pdf"
                         icon={<FiDownload />}
                         label="Download CV"
                         external
