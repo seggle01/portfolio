@@ -1,10 +1,10 @@
 // This is a Main Component of including everything else
-import Nav from "./new_components/nav";
-import Intro from "./new_components/intro";
-import Profile from "./new_components/profile";
-import Interests from "./new_components/interests";
-import Projects from "./new_components/projects";
-import Footer from "./new_components/links";
+import Nav from "./components/nav";
+import Intro from "./components/intro";
+import Profile from "./components/profile";
+import Interests from "./components/interests";
+import Projects from "./components/projects";
+import Footer from "./components/links";
 
 const  main = () =>{
     return (
